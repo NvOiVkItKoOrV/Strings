@@ -7,8 +7,9 @@ char* my_strcpy (char* str1, const char* str2)
     int s2 = my_strlen(str2);
 
     if(s1 < s2)
+    {
         return nullptr;
-
+    }
     int index = 0;
 
     while (*(str2 + index) != '\0')
