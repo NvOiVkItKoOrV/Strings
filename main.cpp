@@ -2,14 +2,11 @@
 #include <string.h>
 #include "my_strings.h"
 
-char *my_strchr (const char *str, int ch);
-
 int main()
 {
-    char buf[] = "asdfghjkl";
-    int chr = 'f';
-    char *newy = nullptr;
-    newy = my_strchr(buf, chr);
-    printf("%s\n", newy);
+    const char buf2[] = "aaaa";
+    char buf1[] = "bbbbb";
+    char *size = my_strcpy(buf1, buf2);
+    printf("%s\n", size);
     return 0;
 }
