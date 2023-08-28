@@ -4,9 +4,10 @@
 
 int main()
 {
-    const char buf2[] = "aaaa";
+    const char buf2[] = "aaaaa";
     char buf1[] = "bbbbb";
-    char *size = my_strcpy(buf1, buf2);
+    char *size = my_strncpy(buf1, buf2, 2);
     printf("%s\n", size);
     return 0;
 }
+
