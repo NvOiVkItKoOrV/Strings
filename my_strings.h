@@ -7,5 +7,6 @@ size_t my_strlen  (const char *str);
 char  *my_strcpy  (char* str1, const char* str2);
 char  *my_strncpy (char* str1, const char* str2, size_t count);
 char  *my_strcat  (char *str1, const char *str2);
+char  *my_strncat (char* str1, const char* str2, size_t count);
 
 #endif /*MY_STRINGS_H*/
