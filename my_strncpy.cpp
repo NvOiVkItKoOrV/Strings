@@ -1,7 +1,7 @@
 #include <string.h>
 #include "my_strings.h"
 
-char* my_strncpy(char* str1, const char* str2, size_t count)
+char* my_strncpy (char* str1, const char* str2, size_t count)
 {
     int s1 = my_strlen((const char*)str1);
     int s2 = my_strlen(str2);

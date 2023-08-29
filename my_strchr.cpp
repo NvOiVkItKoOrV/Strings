@@ -3,11 +3,9 @@
 
 char *my_strchr (const char *str, int ch)
 {
-    int index = 0;
+    for (; *str != ch; str++);
+    //while(*(str + index) != (char)ch)
+    //    index++;
 
-    while(*(str + index) != (char)ch)
-        index++;
-
-    char* found  = (char*)(str + index);
-    return found;
+    return (char*)str;
 }
