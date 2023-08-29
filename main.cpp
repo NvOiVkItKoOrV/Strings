@@ -7,14 +7,14 @@
 
 int main()
 {
-    char buf2[] = "World!";
-    printf("%d",my_strlen(buf2));
+    //char buf2[] = "World!";
+    //printf("%d",my_strlen(buf2));
 
-    /*char buf1[50] = "Hello, ";
+    char buf1[50] = "Hello, ";
     char buf2[] = "World!";
-    char *str = my_strcat(buf1, buf2);
+    char *str = my_strncat(buf1, buf2, 6);
 
-    printf("%s", str);*/
+    printf("%s", str);
 
 
 
