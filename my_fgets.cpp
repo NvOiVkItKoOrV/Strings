@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include "my_strings.h"
 
-char *my_fgets(char *str, int count, FILE *fp)
+char *my_fgets (char *str, int count, FILE *fp)
 {
     int index = 0;
 
-    for(int index = 0;index < count - 1; index++)
+    for (int index = 0;index < count - 1; index++)
     {
-        fscanf(fp,"%c", str + index);
+        *(str + index) = fgetc(fp);
 
         if(*(str + index) == '\n' || *(str + index) == EOF)
             break;
