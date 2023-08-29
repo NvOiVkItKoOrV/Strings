@@ -3,21 +3,17 @@
 
 char* my_strcpy (char* str1, const char* str2)
 {
-    int s1 = my_strlen((const char*)str1);
-    int s2 = my_strlen(str2);
+    char *str = str1;
 
-    if(s1 < s2)
+    if (my_strlen((const char*)str1) < my_strlen(str2))
     {
         return nullptr;
     }
-    int index = 0;
 
-    while (*(str2 + index) != '\0')
-    {
-        str1[index] = str2[index];
-        index++;
-    }
-    str1[index] = '\0';
+    for (; *str2 != '\0';)
+        *(str1++) = *(str2++);
 
-    return str1;
+    *str1 = '\0';
+
+    return str;
 }
