@@ -13,35 +13,20 @@ size_t my_getline (char **buf, size_t *buf_size, FILE *fp)
     if (*buf == nullptr)
         *buf = (char *)malloc(*buf_size * sizeof(char));
 
-    while (index < *buf_size && *(*buf + index) != '\n')
+    while (*(*buf + index) != '\n' && *(*buf + index) != EOF)
     {
-        *(*buf + index) = fgetc(fp);
 
-        if (*(*buf + index) == EOF || *(*buf + index) == '\n')
+        if (index == *buf_size)
         {
-            break;
-            return index;
+
+            *buf = (char*)realloc(*buf, *buf_size * 2);
         }
+            *(*buf + index) = fgetc(fp);
+
         index++;
     }
 
-    /*if (index >= *buf_size && *(*buf + index) != '\n' && *(*buf + index) != EOF)
-    {
-
-        *buf = (char*)realloc(*buf, *buf_size * 8);
-        *buf = *buf + *buf_size;
-        *buf_size *= 2;
-        my_getline(buf, buf_size, fp);
-
-    }
-    else
-    {
         *(*buf + index) = '\0';
-    }*/
-    size_t all_str_count = 0;
 
-    while (*(*buf + all_str_count) == EOF || *(*buf + all_str_count) == '\n')
-        all_str_count++;
-
-    return (size_t)all_str_count;
+    return index;
 }
