@@ -14,3 +14,5 @@ char* my_strncpy (char* str1, const char* str2, size_t count)
 
     return str1;
 }
+
+
