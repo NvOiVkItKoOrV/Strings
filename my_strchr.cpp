@@ -7,3 +7,5 @@ char *my_strchr (const char *str, int ch)
 
     return (char*)str;
 }
+
+
