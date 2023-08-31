@@ -3,12 +3,15 @@
 #include <stdlib.h>
 #include "my_strings.h"
 
+#define ZERO_SIZE 0
+#define NEW_SIZE 64
+
 size_t my_getline (char **buf, size_t *buf_size, FILE *fp)
 {
     size_t index = 0;
 
-    if (*buf_size == 0)
-        *buf_size = 64;
+    if (*buf_size == ZERO_SIZE)
+        *buf_size = NEW_SIZE;
 
     if (*buf == nullptr)
         *buf = (char *)malloc(*buf_size * sizeof(char));
@@ -33,13 +36,11 @@ size_t my_getline (char **buf, size_t *buf_size, FILE *fp)
 
 char *my_fgets (char *str, int count, FILE *fp)
 {
-    int index = 0;
-
     for (int index = 0;index < count - 1; index++)
     {
         *(str + index) = fgetc(fp);
 
-        if(*(str + index) == '\n' || *(str + index) == EOF)
+        if (*(str + index) == '\n' || *(str + index) == EOF)
             break;
 
     }
@@ -51,21 +52,19 @@ char *my_fgets (char *str, int count, FILE *fp)
 void my_puts (const char *buf)
 {
     while (*buf != '\0')
-    {
-        putchar(*buf);
-        buf++;
-    }
+        putchar(*(buf++));
+
     putchar('\n');
 }
 char *my_strcat (char *str1, const char *str2)
 {
     char *str = str1;
-    for (; *str1 != '\0'; str1++);
+    while (*str1 != '\0')
+        str1++;
 
-    for (; *str2 != '\0'; str2++)
-    {
-        *str1++ = *str2;
-    }
+    while (*str2 != '\0')
+        *(str1++) = *(str2++);
+
     *str1 = *str2;
 
     return str;
@@ -73,7 +72,8 @@ char *my_strcat (char *str1, const char *str2)
 
 char *my_strchr (const char *str, int ch)
 {
-    for (; *str != ch; str++);
+    while (*str != ch)
+        str++;
 
     return (char*)str;
 }
@@ -82,12 +82,7 @@ char* my_strcpy (char* str1, const char* str2)
 {
     char *str = str1;
 
-    if (my_strlen((const char*)str1) < my_strlen(str2))
-    {
-        return nullptr;
-    }
-
-    for (; *str2 != '\0';)
+    while (*str2 != '\0')
         *(str1++) = *(str2++);
 
     *str1 = '\0';
@@ -127,7 +122,8 @@ char *my_strncat (char* str1, const char* str2, size_t count)
 
     char *str = str1;
 
-    for (; *str1 != '\0'; str1++);
+    while (*str1 != '\0')
+        str1++;
 
     for (int i = 0; i < count;i++)
         *(str1++) = *(str2++);
@@ -138,12 +134,6 @@ char *my_strncat (char* str1, const char* str2, size_t count)
 
 char* my_strncpy (char* str1, const char* str2, size_t count)
 {
-    int s1 = my_strlen((const char*)str1);
-    int s2 = my_strlen(str2);
-
-    if (s1 < count || s2 < count)
-        return nullptr;
-
     for (int i = 0; i < count; i++)
         str1[i] = str2[i];
 
